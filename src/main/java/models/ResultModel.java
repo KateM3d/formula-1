@@ -1,15 +1,17 @@
 package main.java.models;
 
 import java.sql.Time;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 public class ResultModel {
     private String racerName;
     private String racerTeam;
-    private Time circleTime;
+    private Duration circleTime;
     private int racerPlace;
 
 
-    public ResultModel(String abbreviation, String racerName, String racerTeam, Time circleTime, int racerPlace) {
+    public ResultModel(String abbreviation, String racerName, String racerTeam, Duration circleTime, int racerPlace) {
         this.racerName = racerName;
         this.racerTeam = racerTeam;
         this.circleTime = circleTime;
@@ -24,7 +26,7 @@ public class ResultModel {
         return racerTeam;
     }
 
-    public Time getCircleTime() {
+    public Duration getCircleTime() {
         return circleTime;
     }
 
@@ -40,7 +42,7 @@ public class ResultModel {
         this.racerTeam = racerTeam;
     }
 
-    public void setCircleTime(Time circleTime) {
+    public void setCircleTime(Duration circleTime) {
         this.circleTime = circleTime;
     }
 

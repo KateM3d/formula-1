@@ -1,4 +1,4 @@
-package main.java.dao;
+package dao;
 
 import main.java.models.RacerModel;
 
@@ -8,26 +8,33 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class DAO {
-    public static void getListOfRacers() {
-        ClassLoader classLoader = DAO.class.getClassLoader();
+public class Dao {
+    ClassLoader classLoader = Dao.class.getClassLoader();
+
+    private BufferedReader getBufferedReader(String resource) {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream(resource)), StandardCharsets.UTF_8));
+        return bufferedReader;
+    }
+
+    public List<RacerModel> getListOfRacers() {
         List<RacerModel> racers;
-        try (InputStream inputStream = classLoader.getResourceAsStream("abbreviations.txt")) {
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+        try (BufferedReader bufferedReader = getBufferedReader("abbreviations.txt")) {
             racers = bufferedReader.lines()
                     .map(line -> line.split("_"))
                     .map(str -> new RacerModel(str[0], str[1], str[2]))
                     .collect(Collectors.toList());
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(racers);
+        return racers;
     }
 
     public static void main(String[] args) {
-        getListOfRacers();
+        System.out.println("hhhh");
     }
 }

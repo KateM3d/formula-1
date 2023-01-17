@@ -1,4 +1,4 @@
-package main.java.services;
+package services;
 
 public class ResultSortingServiceImpl implements ResultSortingService {
 }

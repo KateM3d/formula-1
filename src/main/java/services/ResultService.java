@@ -1,4 +1,4 @@
-package main.java.services;
+package services;
 
 public interface ResultService {
 //    ResultModel getResult(RacerModel racer, TimeInfoModel timeInfo);
