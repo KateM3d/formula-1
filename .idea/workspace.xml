@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="504432ee-c523-4649-817b-1f1a4714935a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/EndLogModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/StartLogModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/formula-1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/formula-1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ResultsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ResultsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Dao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/ResultModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/ResultModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/TimeInfoModel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ResultService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/ResultServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ResultServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/ResultSortingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ResultSortingService.java" afterDir="false" />
