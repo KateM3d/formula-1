@@ -9,9 +9,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-public class ResultServiceImpl {
+public class ResultServiceImpl implements ResultService {
 
 
+    @Override
     public List<ResultModel> getResults(List<LogEntryModel> startLogs, List<LogEntryModel> endLogs, @NotNull List<RacerModel> racers) {
         return racers.stream()
                 .map(r -> {
