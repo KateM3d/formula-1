@@ -1,33 +1,25 @@
-package main.java.models;
+package models;
 
-import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class ResultModel {
-    private String racerAbbreviation;
     private String racerName;
     private String racerTeam;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-
     private Duration circleTime;
     private int racerPlace;
 
 
-    public ResultModel(String racerAbbreviation, String racerName, String racerTeam, LocalDateTime startTime, LocalDateTime endTime, Duration circleTime, int racerPlace) {
-        this.racerAbbreviation = racerAbbreviation;
+    public ResultModel(String racerName, String racerTeam, LocalDateTime startTime, LocalDateTime endTime) {
         this.racerName = racerName;
         this.racerTeam = racerTeam;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.circleTime = circleTime;
-        this.racerPlace = racerPlace;
+        this.circleTime = Duration.between(this.startTime, this.endTime);
     }
 
-    public String getRacerAbbreviation() {
-        return racerAbbreviation;
-    }
 
     public String getRacerName() {
         return racerName;
@@ -53,9 +45,6 @@ public class ResultModel {
         return racerPlace;
     }
 
-    public void setRacerAbbreviation(String racerAbbreviation) {
-        this.racerAbbreviation = racerAbbreviation;
-    }
 
     public void setRacerName(String racerName) {
         this.racerName = racerName;
@@ -73,16 +62,12 @@ public class ResultModel {
         this.startTime = startTime;
     }
 
-    public void setCircleTime(Duration circleTime) {
-        this.circleTime = Duration.between(endTime, startTime);
-    }
-
     public void setRacerPlace(int racerPlace) {
         this.racerPlace = racerPlace;
     }
 
     @Override
     public String toString() {
-        return racerPlace + " |" + racerName + " |" + racerTeam + " |" + circleTime;
+        return racerPlace + " |" + racerName + " |" + racerTeam + " |" + circleTime.toMinutesPart() + ":" + circleTime.toSecondsPart() + "." + circleTime.toMillisPart();
     }
 }

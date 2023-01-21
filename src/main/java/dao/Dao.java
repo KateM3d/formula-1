@@ -1,18 +1,14 @@
 package dao;
 
-import main.java.models.EndLogModel;
-import main.java.models.RacerModel;
-import main.java.models.StartLogModel;
+import models.LogEntryModel;
+import models.RacerModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoField;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -21,8 +17,7 @@ public class Dao {
     static ClassLoader classLoader = Dao.class.getClassLoader();
 
     private BufferedReader getBufferedReader(String resource) {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream(resource)), StandardCharsets.UTF_8));
-        return bufferedReader;
+        return new BufferedReader(new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream(resource)), StandardCharsets.UTF_8));
     }
 
     public List<RacerModel> getListOfRacers() {
@@ -39,42 +34,42 @@ public class Dao {
         return racers;
     }
 
-    public List<EndLogModel> getEndLog() {
-        List<EndLogModel> endLogInfo;
+    public List<LogEntryModel> getLogEntries(String logFile) {
+        List<LogEntryModel> logEntries;
 
-        try (BufferedReader bufferedReader = getBufferedReader("end.log")) {
-            endLogInfo = bufferedReader.lines()
+        try (BufferedReader bufferedReader = getBufferedReader(logFile)) {
+            logEntries = bufferedReader.lines()
                     .map(line -> {
                         String nameLastTeamAbbreviation = line.substring(0, 3);
                         String str = line.substring(3);
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("[yyyy-MM-dd_HH:mm:ss[.SSS]]");
                         LocalDateTime cycleEndTime = LocalDateTime.parse(str, formatter);
-                        return new EndLogModel(nameLastTeamAbbreviation, cycleEndTime);
+                        return new LogEntryModel(nameLastTeamAbbreviation, cycleEndTime);
                     })
                     .collect(Collectors.toList());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return endLogInfo;
+        return logEntries;
     }
 
-    public List<StartLogModel> getStartLog() {
-        List<StartLogModel> startLogInfo;
-
-        try (BufferedReader bufferedReader = getBufferedReader("end.log")) {
-            startLogInfo = bufferedReader.lines()
-                    .map(line -> {
-                        String nameLastTeamAbbreviation = line.substring(0, 3);
-                        String str = line.substring(3);
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("[yyyy-MM-dd_HH:mm:ss[.SSS]]");
-                        LocalDateTime cycleStartTime = LocalDateTime.parse(str, formatter);
-                        return new StartLogModel(nameLastTeamAbbreviation, cycleStartTime);
-                    })
-                    .collect(Collectors.toList());
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return startLogInfo;
-    }
+//    public List<StartLogModel> getStartLog() {
+//        List<StartLogModel> startLogInfo;
+//
+//        try (BufferedReader bufferedReader = getBufferedReader("end.log")) {
+//            startLogInfo = bufferedReader.lines()
+//                    .map(line -> {
+//                        String nameLastTeamAbbreviation = line.substring(0, 3);
+//                        String str = line.substring(3);
+//                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("[yyyy-MM-dd_HH:mm:ss[.SSS]]");
+//                        LocalDateTime cycleStartTime = LocalDateTime.parse(str, formatter);
+//                        return new StartLogModel(nameLastTeamAbbreviation, cycleStartTime);
+//                    })
+//                    .collect(Collectors.toList());
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return startLogInfo;
+//    }
 }

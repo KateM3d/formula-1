@@ -1,36 +1,32 @@
 package main.java.models;
 
+import models.LogEntryModel;
+
 import java.time.LocalDateTime;
 
-public class StartLogModel {
-    private String abbreviation;
-    private LocalDateTime startTime;
-
+public class StartLogModel extends LogEntryModel {
     public StartLogModel(String abbreviation, LocalDateTime startTime) {
-
-        this.abbreviation = abbreviation;
-        this.startTime = startTime;
+        super(abbreviation, startTime);
     }
 
     public String getAbbreviation() {
-        return abbreviation;
+        return super.getIdentifier();
     }
 
     public LocalDateTime getStartTime() {
-        return startTime;
+        return super.getEventTime();
     }
 
     public void setAbbreviation(String abbreviation) {
-        this.abbreviation = abbreviation;
+        super.setIdentifier(abbreviation);
     }
 
     public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
+        super.setEventTime(startTime);
     }
 
     @Override
     public String toString() {
-        return abbreviation + " |" +
-                startTime;
+        return super.getIdentifier() + " |" + super.getEventTime();
     }
 }

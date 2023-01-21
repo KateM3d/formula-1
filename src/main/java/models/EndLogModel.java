@@ -1,36 +1,34 @@
-package main.java.models;
+package models;
+
+import models.LogEntryModel;
 
 import java.time.LocalDateTime;
 
-public class EndLogModel {
-    private String abbreviation;
-    private LocalDateTime endTime;
+public class EndLogModel extends LogEntryModel {
 
     public EndLogModel(String abbreviation, LocalDateTime endTime) {
-
-        this.abbreviation = abbreviation;
-        this.endTime = endTime;
+        super(abbreviation, endTime);
     }
 
     public String getAbbreviation() {
-        return abbreviation;
+        return super.getIdentifier();
     }
 
     public LocalDateTime getEndTime() {
-        return endTime;
+        return super.getEventTime();
     }
 
     public void setAbbreviation(String abbreviation) {
-        this.abbreviation = abbreviation;
+        super.setIdentifier(abbreviation);
     }
 
     public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
+        super.setEventTime(endTime);
     }
 
     @Override
     public String toString() {
-        return abbreviation + " |" +
-                endTime;
+        return super.getIdentifier() + " |" +
+                super.getEventTime();
     }
 }

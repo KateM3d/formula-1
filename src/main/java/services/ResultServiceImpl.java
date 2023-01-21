@@ -1,17 +1,37 @@
 package services;
 
-import main.java.models.EndLogModel;
-import main.java.models.RacerModel;
-import main.java.models.ResultModel;
-import main.java.models.StartLogModel;
+import models.LogEntryModel;
+import models.RacerModel;
+import models.ResultModel;
+import org.jetbrains.annotations.NotNull;
 
-public class ResultServiceImpl implements ResultService {
-    @Override
-    public ResultModel getResult(RacerModel racer, EndLogModel endLog, StartLogModel startLog) {
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
 
-        // 1. add results to ResultModel
-        // 2. calculate difference between start-log and endloop.
-        // 2. sort results
-        return null;
+public class ResultServiceImpl {
+
+
+    public List<ResultModel> getResults(List<LogEntryModel> startLogs, List<LogEntryModel> endLogs, @NotNull List<RacerModel> racers) {
+        return racers.stream()
+                .map(r -> {
+                    LocalDateTime startTime = Objects.requireNonNull(startLogs.stream()
+                                    .filter(st -> st.getIdentifier()
+                                            .equals(r.getAbbreviation()))
+                                    .findAny()
+                                    .orElse(null))
+                            .getEventTime();
+
+                    LocalDateTime endTime = Objects.requireNonNull(endLogs.stream()
+                                    .filter(et -> et.getIdentifier()
+                                            .equals(r.getAbbreviation()))
+                                    .findAny()
+                                    .orElse(null))
+                            .getEventTime();
+
+                    return new ResultModel(r.getRacerName(), r.getRacerTeam(), startTime, endTime);
+                })
+                .toList();
     }
+
 }
