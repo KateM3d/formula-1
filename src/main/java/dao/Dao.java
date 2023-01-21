@@ -20,10 +20,10 @@ public class Dao {
         return new BufferedReader(new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream(resource)), StandardCharsets.UTF_8));
     }
 
-    public List<RacerModel> getListOfRacers() {
+    public List<RacerModel> getListOfRacers(String logFile) {
         List<RacerModel> racers;
 
-        try (BufferedReader bufferedReader = getBufferedReader("abbreviations.txt")) {
+        try (BufferedReader bufferedReader = getBufferedReader(logFile)) {
             racers = bufferedReader.lines()
                     .map(line -> line.split("_"))
                     .map(str -> new RacerModel(str[0], str[1], str[2]))
@@ -52,24 +52,4 @@ public class Dao {
         }
         return logEntries;
     }
-
-//    public List<StartLogModel> getStartLog() {
-//        List<StartLogModel> startLogInfo;
-//
-//        try (BufferedReader bufferedReader = getBufferedReader("end.log")) {
-//            startLogInfo = bufferedReader.lines()
-//                    .map(line -> {
-//                        String nameLastTeamAbbreviation = line.substring(0, 3);
-//                        String str = line.substring(3);
-//                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("[yyyy-MM-dd_HH:mm:ss[.SSS]]");
-//                        LocalDateTime cycleStartTime = LocalDateTime.parse(str, formatter);
-//                        return new StartLogModel(nameLastTeamAbbreviation, cycleStartTime);
-//                    })
-//                    .collect(Collectors.toList());
-//
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return startLogInfo;
-//    }
 }

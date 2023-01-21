@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="504432ee-c523-4649-817b-1f1a4714935a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/LogEntryModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ResultsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ResultsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Dao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/EndLogModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/EndLogModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/RacerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/RacerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/ResultModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/ResultModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/StartLogModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/StartLogModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ResultService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/ResultServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ResultServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ResultSortingService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ResultSortingServiceImpl.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +36,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true"
@@ -52,6 +48,9 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="services" />
     </key>
   </component>
   <component name="RunManager">
@@ -106,11 +105,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/services/ResultServiceImpl.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

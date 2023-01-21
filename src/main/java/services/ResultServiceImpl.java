@@ -6,15 +6,17 @@ import models.ResultModel;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class ResultServiceImpl implements ResultService {
 
 
     @Override
     public List<ResultModel> getResults(List<LogEntryModel> startLogs, List<LogEntryModel> endLogs, @NotNull List<RacerModel> racers) {
-        return racers.stream()
+        List<ResultModel> results = racers.stream()
                 .map(r -> {
                     LocalDateTime startTime = Objects.requireNonNull(startLogs.stream()
                                     .filter(st -> st.getIdentifier()
@@ -32,7 +34,10 @@ public class ResultServiceImpl implements ResultService {
 
                     return new ResultModel(r.getRacerName(), r.getRacerTeam(), startTime, endTime);
                 })
+                .sorted(Comparator.comparingLong(rm -> rm.getCircleTime().toMillis()))
                 .toList();
-    }
 
+        IntStream.range(1, results.size() + 1).forEachOrdered(i -> results.get(i-1).setRacerPlace(i));
+        return results;
+    }
 }

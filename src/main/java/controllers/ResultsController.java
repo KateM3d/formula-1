@@ -13,14 +13,11 @@ public class ResultsController {
         Dao dao = new Dao();
         ResultService resultService = new ResultServiceImpl();
 
-        List<RacerModel> racerModels = dao.getListOfRacers();
+        List<RacerModel> racerModels = dao.getListOfRacers("abbreviations.txt");
         List<LogEntryModel> endLogEntries = dao.getLogEntries("end.log");
         List<LogEntryModel> startLogEntries = dao.getLogEntries("start.log");
 
         resultService.getResults(startLogEntries, endLogEntries, racerModels)
                 .forEach(System.out::println);
-
-
     }
-
 }
